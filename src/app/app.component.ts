@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  message = 'Temprary message'
+  search = "empty search"
+  onRemoved(message: string){
+    this.message = message;
+  }
+  // czy tutaj nie zaczna sie mieszac nazwy?
+  onInput(text: string){
+    if (text === ''){
+      this.search = "search cleared";
+      return;
+    }
+    this.search = text;
+    console.log(this.search)
+  }
+}
