@@ -1,30 +1,37 @@
 <header class="site-header">
-    <div class="left">
-        <img [src]="logoPatch()" alt="IPSC ELO logo" />
-        <a class="title" href="https://ipscelo.com/index" rel="noopener noreferrer">
-      {{ headerText }}
-        </a>
-    </div>
+  <div class="left">
+    <img [src]="logoPatch()" alt="IPSC ELO logo" />
+    <a class="title" href="https://ipscelo.com/index" rel="noopener noreferrer">
+      {{ headerText() }}
+    </a>
+  </div>
 
-    <div class="right">
-        <select name="raiting" id="raiting" (change)="onMatchChange($event)">
+  <div class="right">
+    <select name="raiting" id="raiting" (change)="onMatchChange($event)">
       @for (match of matches(); track $index) {
-        <option [value]="match">{{ match }}</option>
+      <option [value]="match">{{ match }}</option>
       }
     </select>
-        <a href="https://ipscelo.com/matches" rel="noopener noreferrer">Matches</a>
-        <a href="https://ipscelo.com/locations" rel="noopener noreferrer">Locations</a>
-        <label for="about">About</label>
-        <select name="about" id="about" (change)="onAboutChange($event)">
+    <a href="https://ipscelo.com/matches" rel="noopener noreferrer">Matches</a>
+    <a href="https://ipscelo.com/locations" rel="noopener noreferrer"
+      >Locations</a
+    >
+    <label for="about">About</label>
+    <select name="about" id="about" (change)="onAboutChange($event)">
       @for (aboutSelected of about(); track $index) {
-        <option [value]="aboutSelected.name">{{ aboutSelected.name }}</option>
+      <option [value]="aboutSelected.name">{{ aboutSelected.name }}</option>
       }
     </select>
-        <div class="input-wrapper">
-            <input type="text" placeholder="Wpisz coś..." [value]="enteredSearch()" (input)="onInput($event)" />
-            <button type="button" (click)="clearInput()">
-            <img [src]="trashPath()" alt="trash" />
-  </button>
-        </div>
+    <div class="input-wrapper">
+      <input
+        type="text"
+        placeholder="Wpisz coś..."
+        [value]="enteredSearch()"
+        (input)="onInput($event)"
+      />
+      <button type="button" (click)="clearInput()">
+        <img [src]="trashPath()" alt="trash" />
+      </button>
     </div>
+  </div>
 </header>

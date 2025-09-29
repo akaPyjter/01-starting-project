@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { HeaderComponent } from "./header/header.component";
 export class AppComponent {
   message = 'Temprary message'
   search = "empty search"
+  private httpClient = inject(HttpClient);
   onRemoved(message: string){
     this.message = message;
   }
@@ -22,5 +24,8 @@ export class AppComponent {
     }
     this.search = text;
     console.log(this.search)
+  }
+  ngOnInit(){
+    this.httpClient.get('https://ipscelo.com/api/competitions')
   }
 }
