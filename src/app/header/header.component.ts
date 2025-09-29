@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent {
   headerText = input<string>();
   search = output<string>();
+  selectedMatch = output<string>();
   enteredSearch = signal<string>('');
   matches = signal<string[]>(MATCHES);
   about = signal<{ name: string; link: string }[]>(ABOUT);
@@ -21,7 +22,7 @@ export class HeaderComponent {
   onMatchChange(event: Event) {
     const selectedElement = event.target as HTMLSelectElement;
     const selected: string = selectedElement.value.toLocaleLowerCase();
-    window.location.href = `https://ipscelo.com/${selected}`;
+    this.selectedMatch.emit(selected);
   }
   onAboutChange(event: Event) {
     const selectedElement = event.target as HTMLSelectElement;

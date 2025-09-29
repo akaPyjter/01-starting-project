@@ -1,5 +1,5 @@
-import { Component, inject, Input } from '@angular/core';
-import { HeaderComponent } from "./header/header.component";
+import { Component, DestroyRef, inject, Input } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,22 +10,50 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  message = 'Temprary message'
-  search = "empty search"
+  message = '';
+  search = 'empty search';
   private httpClient = inject(HttpClient);
-  onRemoved(message: string){
+  private destroyRef = inject(DestroyRef);
+  shooters?: {
+    rank: number;
+    'regions.name': string;
+    'shooters.firstname': string;
+    'shooters.lastname': string;
+    display_rating: number;
+  }[];
+  onRemoved(message: string) {
     this.message = message;
   }
   // czy tutaj nie zaczna sie mieszac nazwy?
-  onInput(text: string){
-    if (text === ''){
-      this.search = "search cleared";
+  onInput(text: string) {
+    if (text === '') {
+      this.search = 'search cleared';
       return;
     }
     this.search = text;
-    console.log(this.search)
+    console.log(this.search);
   }
-  ngOnInit(){
-    this.httpClient.get('https://ipscelo.com/api/competitions')
+  // czy nazewnictwo jest OK, jest to troche mylace TBH
+  onMatchChange(matchName: string) {
+    // tutaj powien doleciec jakis komponent z kategoriami
+    if (matchName === 'shotgun') this.message = 'Shotgun';
+    // to cale zapytanie nie czaje
+    // tutaj dodac sortowanie czy aby napewno jest dobrze wyswietlane
+    const getRequest = this.httpClient
+      .get<
+        {
+          rank: number;
+          'regions.name': string;
+          'shooters.firstname': string;
+          'shooters.lastname': string;
+          display_rating: number;
+        }[]
+      >(
+        'https://ipscelo.com/api/elorankings?divisionid=13&rfilter=&cfilter=&search=&sort=rank&order=asc'
+      )
+      .subscribe({ next: (data) => (this.shooters = data) });
+    this.destroyRef.onDestroy(() => {
+      getRequest.unsubscribe();
+    });
   }
 }
