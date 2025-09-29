@@ -39,6 +39,7 @@ export class AppComponent {
     if (matchName === 'shotgun') this.message = 'Shotgun';
     // to cale zapytanie nie czaje
     // tutaj dodac sortowanie czy aby napewno jest dobrze wyswietlane
+    // czy tutaj robic sam komponent tabeli ? chyba tak 
     const getRequest = this.httpClient
       .get<
         {
