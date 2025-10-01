@@ -1,27 +1,33 @@
-<app-header (search)="onInput($event)" (selectedMatch)="onMatchChange($event)" [headerText]="'IPSC ELO raiting'"></app-header>
+<app-header
+  (search)="onInput($event)"
+  (selectedMatch)="onMatchChange($event)"
+  [headerText]="'IPSC ELO raiting'"
+></app-header>
 <h1>{{ message }}</h1>
 <h2>Search input: {{ search }}</h2>
-@if (message){
+@if (message){ @for(division of divisions; track division.id) {
+<button (click)="onDivisionChange(division.id)">{{ division.name }}</button> }
+
 <table>
-    <thead>
-        <tr>
-            <th>Rank</th>
-            <th>Region</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>ELO Raiting</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(shooter of shooters; track $index) {
-        <tr>
-            <td>{{ shooter.rank }}</td>
-            <td>{{ shooter["regions.name"] }}</td>
-            <td>{{ shooter["shooters.firstname"] }}</td>
-            <td>{{ shooter["shooters.lastname"] }}</td>
-            <td>{{ shooter.display_rating }}</td>
-        </tr>
-        }
-    </tbody>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Region</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>ELO Raiting</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(shooter of shooters; track $index) {
+    <tr>
+      <td>{{ shooter.rank }}</td>
+      <td>{{ shooter["regions.name"] }}</td>
+      <td>{{ shooter["shooters.firstname"] }}</td>
+      <td>{{ shooter["shooters.lastname"] }}</td>
+      <td>{{ shooter.display_rating }}</td>
+    </tr>
+    }
+  </tbody>
 </table>
 }

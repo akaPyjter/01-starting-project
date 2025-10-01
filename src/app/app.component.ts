@@ -1,6 +1,13 @@
-import { Component, DestroyRef, inject, Input } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  Input,
+  ɵgenerateStandaloneInDeclarationsError,
+} from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
+import { Shooter } from './models/shootersInterface';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +21,14 @@ export class AppComponent {
   search = 'empty search';
   private httpClient = inject(HttpClient);
   private destroyRef = inject(DestroyRef);
-  shooters?: {
-    rank: number;
-    'regions.name': string;
-    'shooters.firstname': string;
-    'shooters.lastname': string;
-    display_rating: number;
-  }[];
+  shooters?: Shooter[];
+  divisions = [
+    { id: 11, name: 'Open' },
+    { id: 12, name: 'Modified' },
+    { id: 13, name: 'Standard' },
+    { id: 14, name: 'Standard Manual' },
+  ];
+  division = this.divisions[0].id;
   onRemoved(message: string) {
     this.message = message;
   }
@@ -39,22 +47,19 @@ export class AppComponent {
     if (matchName === 'shotgun') this.message = 'Shotgun';
     // to cale zapytanie nie czaje
     // tutaj dodac sortowanie czy aby napewno jest dobrze wyswietlane
-    // czy tutaj robic sam komponent tabeli ? chyba tak 
+    // czy tutaj robic sam komponent tabeli ? chyba tak
     const getRequest = this.httpClient
-      .get<
-        {
-          rank: number;
-          'regions.name': string;
-          'shooters.firstname': string;
-          'shooters.lastname': string;
-          display_rating: number;
-        }[]
-      >(
-        'https://ipscelo.com/api/elorankings?divisionid=13&rfilter=&cfilter=&search=&sort=rank&order=asc'
+      .get<Shooter[]>(
+        `https://ipscelo.com/api/elorankings?divisionid=${this.division}&rfilter=&cfilter=&search=&sort=rank&order=asc`
       )
       .subscribe({ next: (data) => (this.shooters = data) });
     this.destroyRef.onDestroy(() => {
       getRequest.unsubscribe();
     });
+  }
+  onDivisionChange(division: number) {
+    this.division = division;
+    if (this.message === '') return;
+    this.onMatchChange('shotgun');
   }
 }

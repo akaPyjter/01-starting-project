@@ -1,88 +1,120 @@
-/* --- Nagłówek --- */
+/* --- Kontener dla przycisków i tabeli razem --- */
 
-header {
-    margin: 3rem auto;
-    text-align: center;
+.table-container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* elementy rozciągają się na całą szerokość */
 }
 
-img {
-    width: 8rem;
+/* --- Pasek przycisków nad tabelą --- */
+
+.division-buttons {
+  display: flex;
+  justify-content: center;
+  /* przyciski wyśrodkowane w rzędzie */
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
-h1 {
-    margin: 1rem auto;
-    background: none;
-    /* rezygnujemy z mocnego gradientu */
-    color: #a32a2a;
-    /* ciemny, neutralny tytuł */
-    font-size: 2.5rem;
-    font-weight: 600;
+/* --- Styl przycisków --- */
+
+.division-buttons button {
+  flex: 1;
+  /* każdy przycisk rośnie równo, aby wypełniały szerokość */
+  min-width: 120px;
+  /* minimalna szerokość dla małej liczby przycisków */
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #a32a2a, #c53b3b);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(163, 42, 42, 0.2);
 }
 
+.division-buttons button:hover {
+  background: linear-gradient(135deg, #8a2323, #b52c2c);
+  transform: translateY(-2px);
+}
+
+.division-buttons button:active {
+  transform: scale(0.97);
+}
 
 /* --- Tabela --- */
 
 table {
-    width: 100%;
-    max-width: 1200px;
-    margin: 2rem auto;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    color: #000;
-    /* wyraźny, czarny tekst */
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-
-/* Nagłówki kolumn */
+/* Nagłówki */
 
 table thead {
-    background-color: #f0f0f0;
-    /* delikatna szarość */
+  background-color: #f3f4f6;
 }
 
 table th {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid #d0d0d0;
-    color: #000;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: #1f2937;
+  /* bardzo ciemny szary dla kontrastu */
+  font-size: 1rem;
+  border-bottom: 2px solid #e5e7eb;
 }
-
 
 /* Komórki */
 
 table td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e0e0e0;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+  color: #111827;
+  /* prawie czarny tekst, bardzo czytelny */
+  font-weight: 500;
 }
 
-
-/* Co drugi wiersz lekko podkreślony */
+/* Co drugi wiersz */
 
 table tbody tr:nth-child(even) {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
-
-/* Subtelny efekt hover */
+/* Efekt hover */
 
 table tbody tr:hover {
-    background-color: #f5f5f5;
-    transition: background-color 0.2s ease;
+  background-color: #fef2f2;
+  /* lekki róż, pasuje do przycisków */
+  transition: background-color 0.3s ease;
 }
-
 
 /* --- Responsywność --- */
 
 @media (max-width: 768px) {
-    table {
-        font-size: 0.9rem;
-    }
-    table th,
-    table td {
-        padding: 0.5rem;
-    }
+  .division-buttons {
+    flex-direction: column;
+  }
+  .division-buttons button {
+    flex: none;
+    width: 100%;
+  }
+  table th,
+  table td {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 }
