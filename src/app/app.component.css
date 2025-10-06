@@ -1,120 +1,67 @@
 /* --- Kontener dla przycisków i tabeli razem --- */
 
-.table-container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 2rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  /* elementy rozciągają się na całą szerokość */
-}
 
 /* --- Pasek przycisków nad tabelą --- */
 
 .division-buttons {
-  display: flex;
-  justify-content: center;
-  /* przyciski wyśrodkowane w rzędzie */
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    /* przyciski wyśrodkowane w rzędzie */
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
+
 
 /* --- Styl przycisków --- */
 
 .division-buttons button {
-  flex: 1;
-  /* każdy przycisk rośnie równo, aby wypełniały szerokość */
-  min-width: 120px;
-  /* minimalna szerokość dla małej liczby przycisków */
-  padding: 0.8rem 1rem;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #a32a2a, #c53b3b);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(163, 42, 42, 0.2);
+    flex: 1;
+    /* każdy przycisk rośnie równo, aby wypełniały szerokość */
+    min-width: 120px;
+    /* minimalna szerokość dla małej liczby przycisków */
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #a32a2a, #c53b3b);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(163, 42, 42, 0.2);
 }
 
 .division-buttons button:hover {
-  background: linear-gradient(135deg, #8a2323, #b52c2c);
-  transform: translateY(-2px);
+    background: linear-gradient(135deg, #8a2323, #b52c2c);
+    transform: translateY(-2px);
 }
 
 .division-buttons button:active {
-  transform: scale(0.97);
+    transform: scale(0.97);
 }
+
 
 /* --- Tabela --- */
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
 
 /* Nagłówki */
 
-table thead {
-  background-color: #f3f4f6;
-}
-
-table th {
-  padding: 1rem;
-  text-align: left;
-  font-weight: 700;
-  color: #1f2937;
-  /* bardzo ciemny szary dla kontrastu */
-  font-size: 1rem;
-  border-bottom: 2px solid #e5e7eb;
-}
-
-/* Komórki */
-
-table td {
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 1rem;
-  color: #111827;
-  /* prawie czarny tekst, bardzo czytelny */
-  font-weight: 500;
-}
-
-/* Co drugi wiersz */
-
-table tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-/* Efekt hover */
-
-table tbody tr:hover {
-  background-color: #fef2f2;
-  /* lekki róż, pasuje do przycisków */
-  transition: background-color 0.3s ease;
-}
 
 /* --- Responsywność --- */
 
 @media (max-width: 768px) {
-  .division-buttons {
-    flex-direction: column;
-  }
-  .division-buttons button {
-    flex: none;
-    width: 100%;
-  }
-  table th,
-  table td {
-    padding: 0.6rem;
-    font-size: 0.9rem;
-  }
+    .division-buttons {
+        flex-direction: column;
+    }
+    .division-buttons button {
+        flex: none;
+        width: 100%;
+    }
+    table th,
+    table td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
 }

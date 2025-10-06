@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Region</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>ELO Raiting</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(shooter of shooters(); track $index) {
+        <tr>
+            <td>{{ shooter.rank }}</td>
+            <td>{{ shooter["shooters.firstname"] }}</td>
+            <td>{{ shooter["shooters.lastname"] }}</td>
+            <td>{{ shooter["regions.name"] }}</td>
+            <td>{{ shooter.display_rating }}</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -8,11 +8,12 @@ import {
 import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { Shooter } from './models/shootersInterface';
+import { TableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, TableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
