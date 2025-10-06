@@ -2,5 +2,5 @@
 <h1>{{ message }}</h1>
 <h2>Search input: {{ search }}</h2>
 @if (message){ @for(division of divisions; track division.id) {
-<button (click)="onDivisionChange(division.id)">{{ division.name }}</button>}
+<app-devision-button (click)="onDivisionChange(division.id)">{{ division.name }}</app-devision-button>}
 <app-table [shooters]="shooters"></app-table>}

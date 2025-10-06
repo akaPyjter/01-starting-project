@@ -9,11 +9,12 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { Shooter } from './models/shootersInterface';
 import { TableComponent } from './table/table.component';
+import { DevisionButtonComponent } from './devision-button/devision-button.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, TableComponent],
+  imports: [HeaderComponent, TableComponent, DevisionButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -44,11 +45,7 @@ export class AppComponent {
   }
   // czy nazewnictwo jest OK, jest to troche mylace TBH
   onMatchChange(matchName: string) {
-    // tutaj powien doleciec jakis komponent z kategoriami
     if (matchName === 'shotgun') this.message = 'Shotgun';
-    // to cale zapytanie nie czaje
-    // tutaj dodac sortowanie czy aby napewno jest dobrze wyswietlane
-    // czy tutaj robic sam komponent tabeli ? chyba tak
     const getRequest = this.httpClient
       .get<Shooter[]>(
         `https://ipscelo.com/api/elorankings?divisionid=${this.division}&rfilter=&cfilter=&search=&sort=rank&order=asc`
