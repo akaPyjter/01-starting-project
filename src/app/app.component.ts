@@ -67,10 +67,12 @@ export class AppComponent {
   // czy to zostawic w komponencie czy zrobic serwis?
   onMatchChange(matchName: MatchType) {
     this.match = matchName;
-    const index = this.divisions[this.match].findIndex(
+    let index = this.divisions[this.match].findIndex(
       (division) => division.id === this.division
     );
-    const currentPick = this.divisions[this.match][index > -1 ? index : 0].id;
+    index = index > -1 ? index : 0;
+
+    const currentPick = this.divisions[this.match][index].id;
     const getRequest = this.httpClient
       .get<Shooter[]>(
         `https://ipscelo.com/api/elorankings?divisionid=${currentPick}&rfilter=&cfilter=&search=&sort=rank&order=asc`
