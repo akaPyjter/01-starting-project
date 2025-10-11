@@ -1,4 +1,9 @@
 <h1>{{ header() }}</h1>
+@for(division of divisions(); track division.id) {
+<app-devision-button (click)="onDivisionChange(division.id)">{{
+  division.name
+}}</app-devision-button>
+}
 <table>
   <thead>
     <tr>

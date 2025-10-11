@@ -1,14 +1,20 @@
-import { Component, input } from '@angular/core';
-import { Shooter } from '../models/shootersInterface';
+import { Component, input, output } from '@angular/core';
+import { Divisions, Shooter } from '../models/shootersInterface';
+import { DevisionButtonComponent } from '../devision-button/devision-button.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [],
+  imports: [DevisionButtonComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
 export class TableComponent {
   shooters = input<Shooter[]>();
   header = input<String>();
+  divisions = input<Divisions>();
+  divisionId = output<number>();
+  onDivisionChange(division: number) {
+    this.divisionId.emit(division);
+  }
 }

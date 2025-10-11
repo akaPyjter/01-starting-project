@@ -7,3 +7,4 @@ export interface Shooter {
 }
 
 export type MatchType = 'shotgun' | 'handgun' | 'pcc' | 'rifle' | 'minirifle';
+export type Divisions = { id: number; name: string }[];

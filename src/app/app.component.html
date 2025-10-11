@@ -3,8 +3,11 @@
   (selectedMatch)="onMatchChange($event)"
   [headerText]="'IPSC ELO raiting'"
 ></app-header>
-@if (match){ @for(division of divisions[match]; track division.id) {
-<app-devision-button (click)="onDivisionChange(division.id)">{{
-  division.name
-}}</app-devision-button
->} <app-table [shooters]="shooters" [header]="message"></app-table>}
+@if (match){
+<app-table
+  [shooters]="shooters"
+  [header]="message"
+  [divisions]="divisions[match]"
+  (divisionId)="onDivisionChange($event)"
+></app-table>
+}

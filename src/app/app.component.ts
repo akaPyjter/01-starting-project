@@ -1,20 +1,15 @@
-import {
-  Component,
-  DestroyRef,
-  inject,
-  Input,
-  ɵgenerateStandaloneInDeclarationsError,
-} from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { HttpClient } from '@angular/common/http';
 import { MatchType, Shooter } from './models/shootersInterface';
 import { TableComponent } from './table/table.component';
-import { DevisionButtonComponent } from './devision-button/devision-button.component';
+
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, TableComponent, DevisionButtonComponent],
+  imports: [HeaderComponent, TableComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -60,7 +55,7 @@ export class AppComponent {
   onRemoved(message: string) {
     this.message = message;
   }
-  // czy tutaj nie zaczna sie mieszac nazwy?
+
   onInput(text: string) {
     if (text === '') {
       this.search = 'search cleared';
@@ -72,8 +67,10 @@ export class AppComponent {
   // czy to zostawic w komponencie czy zrobic serwis?
   onMatchChange(matchName: MatchType) {
     this.match = matchName;
-    // tutaj trzeba zlokalizowac ktory to indeks w tabeli a nie this.division
-    const currentPick = this.divisions[this.match][this.division].id;
+    const index = this.divisions[this.match].findIndex(
+      (division) => division.id === this.division
+    );
+    const currentPick = this.divisions[this.match][index > -1 ? index : 0].id;
     const getRequest = this.httpClient
       .get<Shooter[]>(
         `https://ipscelo.com/api/elorankings?divisionid=${currentPick}&rfilter=&cfilter=&search=&sort=rank&order=asc`
@@ -86,8 +83,6 @@ export class AppComponent {
 
   onDivisionChange(division: number) {
     this.division = division;
-    console.log(division);
-    console.log(this.match);
     this.onMatchChange(this.match!);
   }
 }

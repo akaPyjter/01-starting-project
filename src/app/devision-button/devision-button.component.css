@@ -1,39 +1,42 @@
 .devision-button {
-    background-color: #f3f4f6;
-    color: black;
-    border: none;
-    border-radius: 8px;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  background-color: #f3f4f6;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-
 
 /* Efekt hover */
 
 .devision-button:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
-
 
 /* Po kliknięciu (active) */
 
-.devision-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+.devision-button.active {
+  background-color: lightgreen;
+  color: white;
+  font-weight: bold;
 }
 
+.devision-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
 /* Opcjonalnie: rozmiar dopasowany do tabeli */
 
 .devision-button.small {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
 }
