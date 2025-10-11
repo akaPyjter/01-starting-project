@@ -6,7 +6,4 @@ export interface Shooter {
   display_rating: number;
 }
 
-
-export interface ShotgunInterface {
- 
-}
+export type MatchType = 'shotgun' | 'handgun' | 'pcc' | 'rifle' | 'minirifle';

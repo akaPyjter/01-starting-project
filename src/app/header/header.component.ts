@@ -2,6 +2,7 @@ import { Component, computed, input, output, signal } from '@angular/core';
 import { MATCHES, ABOUT } from '../selectTexts';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatchType } from '../models/shootersInterface';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +15,15 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent {
   headerText = input<string>();
   search = output<string>();
-  selectedMatch = output<string>();
+  selectedMatch = output<MatchType>();
   enteredSearch = signal<string>('');
   matches = signal<string[]>(MATCHES);
   about = signal<{ name: string; link: string }[]>(ABOUT);
 
   onMatchChange(event: Event) {
     const selectedElement = event.target as HTMLSelectElement;
-    const selected: string = selectedElement.value.toLocaleLowerCase();
+    const selected: MatchType =
+      selectedElement.value.toLocaleLowerCase() as MatchType;
     this.selectedMatch.emit(selected);
   }
   onAboutChange(event: Event) {

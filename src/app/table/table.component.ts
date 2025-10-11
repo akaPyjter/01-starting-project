@@ -10,4 +10,5 @@ import { Shooter } from '../models/shootersInterface';
 })
 export class TableComponent {
   shooters = input<Shooter[]>();
+  header = input<String>();
 }

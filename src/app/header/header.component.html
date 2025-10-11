@@ -8,6 +8,7 @@
 
   <div class="right">
     <select name="raiting" id="raiting" (change)="onMatchChange($event)">
+      <option value="" selected disabled hidden>Match Category</option>
       @for (match of matches(); track $index) {
       <option [value]="match">{{ match }}</option>
       }

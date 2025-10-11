@@ -1,14 +1,12 @@
 .devision-button {
-    background-color: #f87171;
-    /* jasnoczerwony (np. Tailwind: red-400) */
-    color: white;
+    background-color: #f3f4f6;
+    color: black;
     border: none;
     border-radius: 8px;
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(248, 113, 113, 0.3);
     transition: all 0.25s ease;
     display: inline-flex;
     align-items: center;
@@ -20,9 +18,6 @@
 /* Efekt hover */
 
 .devision-button:hover {
-    background-color: #ef4444;
-    /* ciemniejszy czerwony */
-    box-shadow: 0 6px 15px rgba(248, 113, 113, 0.4);
     transform: translateY(-2px);
 }
 
@@ -30,19 +25,8 @@
 /* Po kliknięciu (active) */
 
 .devision-button:active {
-    background-color: #dc2626;
-    /* jeszcze ciemniejszy */
     transform: translateY(0);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Stan focus (dla dostępności) */
-
-.devision-button:focus {
-    outline: 3px solid #fecaca;
-    /* delikatna obwódka */
-    outline-offset: 2px;
 }
 
 
