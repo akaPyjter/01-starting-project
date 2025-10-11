@@ -22,13 +22,18 @@
 
 /* Po kliknięciu (active) */
 
+.devision-button:active {
+  background-color: lightgreen;
+  color: white;
+  font-weight: bold;
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 .devision-button.active {
   background-color: lightgreen;
   color: white;
   font-weight: bold;
-}
-
-.devision-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }

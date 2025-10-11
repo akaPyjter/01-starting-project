@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-devision-button',
@@ -9,9 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './devision-button.component.css',
 })
 export class DevisionButtonComponent {
-  selectedId: number | null = null; 
-
-  select(id: number) {
-    this.selectedId = id;
-  }
+  active = input<boolean>();
 }

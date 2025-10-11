@@ -10,11 +10,14 @@ import { DevisionButtonComponent } from '../devision-button/devision-button.comp
   styleUrl: './table.component.css',
 })
 export class TableComponent {
+  selectedId: number | null = null;
+
   shooters = input<Shooter[]>();
   header = input<String>();
   divisions = input<Divisions>();
   divisionId = output<number>();
   onDivisionChange(division: number) {
     this.divisionId.emit(division);
+    this.selectedId = division;
   }
 }
