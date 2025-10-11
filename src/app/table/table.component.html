@@ -27,10 +27,13 @@
     </tr>
     }
   </tbody>
+</table>
+<div class="paginator-container">
   <mat-paginator
-    [length]="shooters()!.length"
+    class="custom-paginator"
+    [length]="shooters()?.length ?? 0"
     [pageSizeOptions]="[10, 25, 50, 100]"
     (page)="onPageChange($event)"
   >
   </mat-paginator>
-</table>
+</div>

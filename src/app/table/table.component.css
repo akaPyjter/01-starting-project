@@ -1,60 +1,111 @@
 .table-container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    /* elementy rozciągają się na całą szerokość */
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* elementy rozciągają się na całą szerokość */
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 table thead {
-    background-color: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 table th {
-    padding: 1rem;
-    text-align: left;
-    font-weight: 700;
-    color: #1f2937;
-    /* bardzo ciemny szary dla kontrastu */
-    font-size: 1rem;
-    border-bottom: 2px solid #e5e7eb;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: #1f2937;
+  /* bardzo ciemny szary dla kontrastu */
+  font-size: 1rem;
+  border-bottom: 2px solid #e5e7eb;
 }
-
 
 /* Komórki */
 
 table td {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1rem;
-    color: #111827;
-    /* prawie czarny tekst, bardzo czytelny */
-    font-weight: 500;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+  color: #111827;
+  /* prawie czarny tekst, bardzo czytelny */
+  font-weight: 500;
 }
-
 
 /* Co drugi wiersz */
 
 table tbody tr:nth-child(even) {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
-
 
 /* Efekt hover */
 
 table tbody tr:hover {
-    background-color: #fef2f2;
-    /* lekki róż, pasuje do przycisków */
-    transition: background-color 0.3s ease;
+  background-color: #fef2f2;
+  /* lekki róż, pasuje do przycisków */
+  transition: background-color 0.3s ease;
+}
+
+.paginator-container {
+  display: flex;
+  justify-content: flex-end; /* wyrównanie do prawej */
+  margin-top: 1rem;
+  background-color: #e5e7eb;
+}
+
+.custom-paginator {
+  background-color: #cccbcb;
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* popraw kolory wnętrza paginatora */
+::ng-deep .custom-paginator .mat-mdc-paginator-range-label,
+::ng-deep .custom-paginator .mat-mdc-icon-button,
+::ng-deep .custom-paginator .mat-mdc-select-value {
+  color: rgb(5, 5, 5) !important;
+}
+
+/* Styl samego panelu rozwijania */
+::ng-deep .mat-mdc-select-panel {
+  background-color: #333 !important;
+  color: #fff !important;
+
+  /* 🔹 najważniejsze – ustaw pozycjonowanie względem prawej strony */
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+
+  /* 🔹 przesunięcie punktu "rozwoju" animacji */
+  transform-origin: top right !important;
+
+  /* 🔹 dodaj delikatne przesunięcie, by było widać efekt */
+  transform: translateX(0);
+}
+
+/* Kolor opcji w menu */
+/* dlaczego nie moge tutaj zrobic do prawej */
+::ng-deep .mat-mdc-option {
+  color: #fff !important;
+  right: 0 !important;
+  left: auto !important;
+  transform-origin: top right !important;
+}
+
+/* Kolor po najechaniu */
+::ng-deep .mat-mdc-option.mdc-list-item--selected,
+::ng-deep .mat-mdc-option:hover {
+  background-color: #555 !important;
 }
