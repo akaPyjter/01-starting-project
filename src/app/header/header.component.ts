@@ -35,7 +35,6 @@ export class HeaderComponent {
     }
   }
 
-  // remove computed when no need to change the image dynamically
   logoPatch = computed(() => {
     return 'assets/ipsc-logo.png';
   });
@@ -49,7 +48,6 @@ export class HeaderComponent {
   }
 
   onInput(event: Event) {
-    //[(ngModel)]="enteredSearch" czy [value]="enteredSearch()"
     const value = (event.target as HTMLInputElement).value;
     this.enteredSearch.set(value);
     this.search.emit(value);
