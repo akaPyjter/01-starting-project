@@ -6,7 +6,7 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './devision-button.component.html',
-  styleUrl: './devision-button.component.css',
+  styleUrls: ['./devision-button.component.css'],
 })
 export class DevisionButtonComponent {
   active = input<boolean>();

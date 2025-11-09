@@ -6,7 +6,6 @@ import { MatchType } from '../models/shootersInterface';
 
 @Component({
   selector: 'app-header',
-  // czym one sie roznia
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './header.component.html',
